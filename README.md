@@ -4,3 +4,6 @@ wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm
 sudo rpm -ivh jdk-17_linux-x64_bin.rpm
 sudo alternatives --config java
 java -version
+
+//hostname 변경
+hostnamectl set-hostname "변경할 이름" 
