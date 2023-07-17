@@ -1,5 +1,6 @@
 package haekyu005.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,21 @@ public class MainController {
                 <h1>입력된 나이 : %d</h1>
                 <h1>get으로 왔니?</h1>
                 """.formatted(age);
+    }
+
+    @GetMapping("/addArticle")
+    @ResponseBody
+    public String addArticle(String title, String body) {
+        int id = 1;
+        Article article = new Article(id, title, body);
+
+        return "%d번 게시물이 생성되었습니다.".formatted(id);
+    }
+
+    @AllArgsConstructor
+    class Article {
+        private int id;
+        private String title;
+        private String body;
     }
 }
