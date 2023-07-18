@@ -1,8 +1,14 @@
 package haekyu005.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -45,19 +51,85 @@ public class MainController {
                 """.formatted(age);
     }
 
+    private List<Article> articles = new ArrayList<>(
+            Arrays.asList(
+                    new Article("제목", "내용"),
+                    new Article("제목", "내용")
+            )
+    );
+
     @GetMapping("/addArticle")
     @ResponseBody
     public String addArticle(String title, String body) {
-        int id = 1;
-        Article article = new Article(id, title, body);
+        Article article = new Article(title, body);
+        articles.add(article);
 
-        return "%d번 게시물이 생성되었습니다.".formatted(id);
+        return "%d번 게시물이 생성되었습니다.".formatted(article.getId());
+    }
+
+    @GetMapping("/article/{id}")
+    @ResponseBody
+    public Article getArticle(@PathVariable int id) {
+
+        Article article = articles // id가 1번인 게시물이 앞에서 3번째
+                .stream()
+                .filter(a -> a.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        return article;
+    }
+    @GetMapping("/modifyArticle/{id}")
+    @ResponseBody
+    public String modifyArticle(@PathVariable int id, String title, String body) {
+
+        Article article = articles // id가 1번인 게시물이 앞에서 3번째
+                .stream()
+                .filter(a -> a.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if(article == null) {
+            return "%d번 게시물은 존재하지 않습니다.".formatted(id);
+        }
+
+        article.setTitle(title);
+        article.setBody(body);
+
+        return "%d번 게시물을 수정하였습니다.".formatted(article.getId());
+    }
+
+    @GetMapping("/deleteArticle/{id}")
+    @ResponseBody
+    public String deleteArticle(@PathVariable int id) {
+
+        Article article = articles
+                .stream()
+                .filter(a -> a.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if(article == null) {
+            return "%d번 게시물은 존재하지 않습니다.".formatted(id);
+        }
+
+        articles.remove(article);
+
+        return "%d번 게시물을 삭제하였습니다.".formatted(article.getId());
     }
 
     @AllArgsConstructor
+    @Getter
+    @Setter
     class Article {
+        private static int lastId = 0;
+
         private int id;
         private String title;
         private String body;
+
+        public Article(String title, String body) {
+            this(++lastId, title, body);
+        }
     }
 }
