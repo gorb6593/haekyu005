@@ -1,4 +1,4 @@
-package haekyu005.controller;
+package haekyu005;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class MainController {
     public String index(){
         return "안녕하셈2.";
     }
-    
+
     @GetMapping("/page1")
     @ResponseBody
     public String showGet(){
