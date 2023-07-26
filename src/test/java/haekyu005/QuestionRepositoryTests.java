@@ -1,5 +1,7 @@
 package haekyu005;
 
+import haekyu005.question.Question;
+import haekyu005.question.QuestionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +23,15 @@ public class QuestionRepositoryTests {
     }
 
     private void createSampleData() {
-        Question q1 = new Question();
-        q1.setSubject("sbb가 무엇인가요?");
-        q1.setContent("sbb에 대해서 알고 싶습니다.");
-        q1.setCreateDate(LocalDateTime.now());
-        questionRepository.save(q1);
 
-        Question q2 = new Question();
-        q2.setSubject("스프링부트 모델 질문입니다.");
-        q2.setContent("id는 자동으로 생성되나요?");
-        q2.setCreateDate(LocalDateTime.now());
-        questionRepository.save(q2);
-
-        lastSampleDataId = q2.getId();
     }
-
+    public static void createSampleData(QuestionRepository questionRepository) {
+        createSampleData(questionRepository);
+    }
     private void clearData() {
+        clearData(questionRepository);
+    }
+    private static void clearData(QuestionRepository questionRepository) {
         questionRepository.disableForeignKeyCheck();
         questionRepository.truncate();
         questionRepository.enableForeignKeyCheck();

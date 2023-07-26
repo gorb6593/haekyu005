@@ -1,5 +1,6 @@
-package haekyu005;
+package haekyu005.answer;
 
+import haekyu005.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package haekyu005;
+package haekyu005.question;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,5 +1,7 @@
 package haekyu005;
 
+import haekyu005.question.Question;
+import haekyu005.question.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
