@@ -21,6 +21,10 @@ public class MainController {
     public String index(){
         return "안녕하셈2.";
     }
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/question/list";
+    }
 
     @GetMapping("/page1")
     @ResponseBody
