@@ -1,6 +1,7 @@
 package haekyu005.question;
 
 import haekyu005.answer.Answer;
+import haekyu005.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(length = 200)
     private String subject;
@@ -25,6 +26,9 @@ public class Question {
 
     private LocalDateTime createDate;
 
+    @ManyToOne
+    private SiteUser author;
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     //private List<Answer> answerList;
     private List<Answer> answerList = new ArrayList<>();
@@ -33,4 +37,6 @@ public class Question {
         answer.setQuestion(this);
         getAnswerList().add(answer);
     }
+
+
 }

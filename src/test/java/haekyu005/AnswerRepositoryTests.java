@@ -46,15 +46,13 @@ public class AnswerRepositoryTests {
     }
 
     private void clearData() {
-        questionRepository.disableForeignKeyCheck();
         questionRepository.truncate();
         answerRepository.truncate();
-        questionRepository.enableForeignKeyCheck();
     }
 
     @Test
     void 저장() {
-        Question q = this.questionRepository.findById(2).get();
+        Question q = this.questionRepository.findById(2L).get();
 
         Answer a = new Answer();
         a.setContent("네 자동으로 생성됩니다2.");
@@ -66,7 +64,7 @@ public class AnswerRepositoryTests {
 
     @Test
     void 조회() {
-        Optional<Answer> oa = this.answerRepository.findById(1);
+        Optional<Answer> oa = this.answerRepository.findById(1L);
         assertTrue(oa.isPresent());
         Answer a = oa.get();
         assertEquals(2, a.getQuestion().getId());

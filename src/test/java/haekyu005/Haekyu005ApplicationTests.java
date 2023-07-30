@@ -40,9 +40,7 @@ class Haekyu005ApplicationTests {
 //		q2.setCreateDate(LocalDateTime.now());
 //		this.questionRepository.save(q2);  // 두번째 질문 저장
 
-		questionRepository.disableForeignKeyCheck();
 		questionRepository.truncate();
-		questionRepository.enableForeignKeyCheck();
 	}
 
 	@Test
@@ -76,7 +74,7 @@ class Haekyu005ApplicationTests {
 
 	@Test
 	void testJpa6() {
-		Optional<Question> oq = this.questionRepository.findById(1);
+		Optional<Question> oq = this.questionRepository.findById(1L);
 		assertTrue(oq.isPresent());
 		Question q = oq.orElse(null);
 		q.setSubject("수정된 제목");
@@ -86,7 +84,7 @@ class Haekyu005ApplicationTests {
 	@Test
 	void testJpa7() {
 		assertEquals(2, this.questionRepository.count());
-		Optional<Question> oq = this.questionRepository.findById(1);
+		Optional<Question> oq = this.questionRepository.findById(1L);
 		assertTrue(oq.isPresent());
 		Question q = oq.get();
 		this.questionRepository.delete(q);
