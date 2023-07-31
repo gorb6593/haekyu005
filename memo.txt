@@ -8,7 +8,7 @@ hostname 변경
 hostnamectl set-hostname "변경할 이름"
 
 깃 설치
-sudo yum instal git
+sudo yum install git
 
 mkdir ~/app && mkdir ~/app/step1
 
