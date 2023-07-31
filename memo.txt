@@ -43,3 +43,10 @@ sdk 버전 맞추기
 자바 버전 맞추기
 7. 사용하고있는 maven의 pom.xml이나 gradle의 build.gradle 파일
 자바 버전 맞추기
+
+db설정확인
+
+SHOW VARIABLES LIKE 'c%';
+ALTER DATABASE [db이름] CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+mysql host address => RDS 엔드포인트
