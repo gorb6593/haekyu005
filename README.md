@@ -1,4 +1,7 @@
-AWS => 
+AWS => 과정
+JAVA => 버전, 로직 설명
+DB => 과정 설명, 타입, latin1등 설명 적기
+프로젝트 설명 => mvc패턴 spirng부트 등
 
 리눅스 자바 17버전 설치
 wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm
