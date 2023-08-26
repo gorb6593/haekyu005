@@ -9,6 +9,9 @@ http://ec2-54-180-167-251.ap-northeast-2.compute.amazonaws.com:8080
 
 java17, SpringBoot 3.0.9, AWS, RDS
 
+--프로젝트 설명--
+
+아키텍처부터 작성하기 (이게 마지막!!)
 
 
 
